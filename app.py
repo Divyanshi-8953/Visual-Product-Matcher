@@ -87,4 +87,6 @@ if uploaded_file:
     cols = st.columns(5)
     for i, (match, score) in enumerate(results):
         with cols[i]:
-            st.image(match["path"], caption=f"{match['file']}\nScore={score:.3f}", use_container_width=True)
+            st.image(f"images/{match['file']}", caption=f"{match['file']}\nScore={score:.3f}")
+
+
