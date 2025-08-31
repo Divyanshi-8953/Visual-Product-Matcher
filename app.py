@@ -83,16 +83,22 @@ if uploaded_file:
 
     results = search_similar(query_path, product_db, top_k=5)
 
-    st.subheader("Top Matches: ")
-    cols = st.columns(len(results))
-    for i, (match, score) in enumerate(results):
-        with cols[i]:
-            base = os.path.splitext(match["file"])[0]
-            for ext in [".jpg", ".jpeg", ".png"]:
-                img_path = os.path.join("images", base + ext)
-                if os.path.exists(img_path):
-                    st.image(img_path, caption=f"{match['file']}\nScore={score:.3f}")
-                    break
+    st.subheader("Top Matches:")
+    html_code = ""
+    for match, score in results:
+        base = os.path.splitext(match["file"])[0]
+        for ext in [".jpg", ".jpeg", ".png"]:
+            img_path = os.path.join("images", base + ext)
+            if os.path.exists(img_path):
+                html_code += f """
+                    <div style="display:inline-block; margin-right:10px; text-align:center;">
+                        <img src="{img_path}" width="150"><br>
+                        {match['file']} Score={score:.3f}
+                    </div>
+                """
+                break
+    st.markdown(html_code, unsafe_allow_html=True)
+
 
 
 
