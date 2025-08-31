@@ -93,8 +93,8 @@ if uploaded_file:
     )
 
     results = search_similar(query_path, product_db, top_k=5)
-    cols = st.columns(len(results)) 
     st.subheader("Top Matches:")
+    cols = st.columns(len(results)) 
     
     for i, (match, score) in enumerate(results):
         with cols[i]:
@@ -104,6 +104,7 @@ if uploaded_file:
                 if os.path.exists(img_path):
                     st.image(img_path, caption=f"{match['file']}\nScore={score:.3f}")
                     break
+
 
 
 
