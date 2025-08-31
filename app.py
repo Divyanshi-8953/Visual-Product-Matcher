@@ -87,7 +87,13 @@ if uploaded_file:
     cols = st.columns(5)
     for i, (match, score) in enumerate(results):
         with cols[i]:
-            st.image(f"images/{match['file']}", caption=f"{match['file']}\nScore={score:.3f}")
+            base = os.path.splitext(match["file"])[0]
+            for ext in [".jpg", ".jpeg", ".png"]:
+                img_path = os.path.join("images", base + ext)
+                if os.path.exists(img_path):
+                    st.image(img_path, caption=f"{match['file']}\nScore={score:.3f}")
+                    break
+
 
 
 
