@@ -3,6 +3,8 @@
 
 LINK : https://visual-appuct-matcher-zglx9gfrrz9zxfmktvhbcn.streamlit.app/
 
+P.S. - Upload only tshirt images for testing (still working for more..twink!)
+
 Features
 
  Upload any product image
